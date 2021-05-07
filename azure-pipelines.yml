@@ -1,7 +1,7 @@
 # Starter pipeline
 pr:
 -master
-
+strategy:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
