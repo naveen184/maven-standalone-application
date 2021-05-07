@@ -1,4 +1,11 @@
 # Starter pipeline
+pr:
+-master
+stratogy:
+matrix:
+    jdk10_windows:
+    imagename: "vs2017-win2016"
+    maxparalell: 1
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -18,8 +25,6 @@
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
 
 steps:
 - script: echo Hello, world!
