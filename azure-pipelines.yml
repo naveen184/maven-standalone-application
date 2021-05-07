@@ -1,7 +1,6 @@
 # Starter pipeline
 pr:
 -master
-stratogy:
 matrix:
     jdk10_windows:
     imagename: "vs2017-win2016"
