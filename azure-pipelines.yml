@@ -1,10 +1,7 @@
 # Starter pipeline
 pr:
 -master
-matrix:
-    jdk10_windows:
-    imagename: "vs2017-win2016"
-    maxparalell: 1
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -23,7 +20,8 @@ matrix:
 
 trigger:
 - master
-
+pool:
+    viImage: $(vs2017-win2016)
 
 steps:
 - script: echo Hello, world!
