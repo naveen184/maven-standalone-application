@@ -1,0 +1,22 @@
+name: Publish Artifacts to JFrog
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v1
+        with:
+          jfrog-cli-version: '1.49.3'
+          jfrog-cli-distribution: 'linux-amd64'
+      - name: Log in to JFrog
+        run: jfrog rt config --interactive=false --user=${{ secrets.username }} --password=${{ secrets.password }} --url=${{ secrets.https://strange.jfrog.io/ui/admin/projects/overview?projectKey=u22 }}
+      - name: Publish artifacts
+        run: jfrog rt upload --recursive --regexp="target/*.jar" myrepo-local/
