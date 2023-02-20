@@ -23,7 +23,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - uses: jfrog/setup-jfrog-cli@v3
-       env:
+env:
    # JFrog platform url (for example: https://acme.jfrog.io) 
       JF_URL: ${{  }}
 
